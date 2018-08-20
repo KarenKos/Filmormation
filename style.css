@@ -1,0 +1,26 @@
+#film{
+    text-align: center;
+}
+#adv{
+
+}
+#inputs{
+    width: 50%;
+    margin-left: auto; 
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+#results{
+    width: 50%;
+    margin-left: auto; 
+    margin-right: auto;
+    text-align: center;
+}
+@media screen and (max-width: 800px) {
+    #inputs, #results {
+        width: 75%;
+    }
+}
