@@ -1,5 +1,6 @@
 import axios from "axios";
 import Movie from "./movie";
+import More from "./more";
 
 class Advanced {
     constructor() {
@@ -33,7 +34,7 @@ class Advanced {
                         // console.log(request, response.data);
                         moviecard[i] = new Movie(response.data);
                         moviecard[i].renderResponse(response.data);
-                        console.log(moviecard[i])
+                        // console.log(request,response.data)
                     }).catch((error) => { console.log(error) });
 
                     // this.results.innerHTML += `<a href="https://www.filmweb.pl/Harry.Potter.I.Kamien.Filozoficzny">${response.data.Search[i].Title} rok: ${response.data.Search[i].Year} </br> </a>`;

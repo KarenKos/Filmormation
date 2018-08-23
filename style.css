@@ -1,7 +1,6 @@
 body{
-    background-image: url('img/green_gobbler_@2X.png')
+    background-image: url('img/green_gobbler_@2X.png');
 }
-
 #film{
     text-align: center;
 }
@@ -29,6 +28,28 @@ body{
     margin: 1rem;
 
 }
+.overlay {
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color:black;
+    opacity:0.6;
+    z-index:1001;
+}
+#overlay-message{
+    position: fixed;
+    top:2rem;
+    left:2rem;
+    width:calc(100vw - 4rem);
+    height: calc(100vh   - 4rem);
+    background-color:#fff;
+    opacity:1;
+    z-index:1002;
+}
+
+
 @media screen and (max-width: 800px) {
     #inputs, #results {
         width: 75%;
