@@ -1,16 +1,15 @@
 import axios from "axios";
-import More from "./more";
+import Movie from "./movie";
 
 class Advanced {
     constructor() {
         const show = () => {
-            this.film.innerHTML +='<div id="inputs"></div>';
+            this.adv.removeEventListener('click', show);
             this.inputs=document.getElementById('inputs');
-            this.inputs.innerHTML += '<div class="input-group mb-3"> <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">Tytuł</span></div><input id="title" type="text" class="form-control" placeholder="Podaj tytuł" aria-label="tytul" aria-describedby="basic-addon1"></div>';
-            this.inputs.innerHTML += '<div class="input-group mb-3"> <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">Rok premiery</span></div><input id="year" type="number" class="form-control" placeholder="Podaj rok premiery" aria-label="tytul" aria-describedby="basic-addon1"></div>';
-            this.inputs.innerHTML += '<div class="input-group mb-3"><div class="input-group-prepend"><label class="input-group-text" for="inputGroupSelect01">Typ</label></div> <select id="type" class="custom-select" id="inputGroupSelect01"><option selected>Wybierz...</option><option value="1">Film</option><option value="2">Serial</option><option value="3">Epizod</option></select></div>';
-            this.inputs.innerHTML += '</br><button id="search" type="button" class="btn btn-success">Szukaj</button>';
-            this.film.innerHTML += '</br><div id =results></div>';
+            this.inputs.innerHTML += '<div class="input-group mb-3"> <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">Title</span></div><input id="title" type="text" class="form-control" placeholder="Your title" aria-label="tytul" aria-describedby="basic-addon1"></div>';
+            this.inputs.innerHTML += '<div class="input-group mb-3"> <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">Year</span></div><input id="year" type="number" class="form-control" placeholder="Release year" aria-label="tytul" aria-describedby="basic-addon1"></div>';
+            this.inputs.innerHTML += '<div class="input-group mb-3"><div class="input-group-prepend"><label class="input-group-text" for="inputGroupSelect01">Type</label></div> <select id="type" class="custom-select" id="inputGroupSelect01"><option selected>Choose...</option><option value="1">Movie</option><option value="2">Series</option><option value="3">Episode</option></select></div>';
+            this.inputs.innerHTML += '</br><button id="search" type="button" class="btn btn-success">Search</button>';
             this.title = document.getElementById('title');
             this.year = document.getElementById('year');
             this.type = document.getElementById('type');
@@ -19,20 +18,29 @@ class Advanced {
             this.search.addEventListener('click', () => { this.query();}); 
         }
         this.film =document.getElementById('film');
-        this.film.innerHTML += '<button id="adv" type="button" class="btn btn-primary">Zaawansowana Szukajka</button></br></br>';
+        this.film.innerHTML += '<button id="adv" type="button" class="btn btn-primary">Advanced search</button></br></br>';
         this.adv= document.getElementById('adv');
         this.adv.addEventListener('click',show);
         }
         display(response){
             console.log(response);
             this.results.innerHTML='';
+            let moviecard=[];
             if (response.data.Response=="True"){
-                for (let i =0; i<5;i++){
-                    this.results.innerHTML += `<a href="https://www.filmweb.pl/Harry.Potter.I.Kamien.Filozoficzny">${response.data.Search[i].Title} rok: ${response.data.Search[i].Year} </br> </a>`;
-                    (response.data.Search[i].Poster != "N/A") ? (this.results.innerHTML += `<img src="${response.data.Search[i].Poster}"></br></a>`) :`</a >`;
+                for (let i =0; i<response.data.Search.length;i++){
+                    let request = `http://www.omdbapi.com/?apikey=f63ccd1d&i=${response.data.Search[i].imdbID}`;
+                    axios.get(request).then((response) => {
+                        // console.log(request, response.data);
+                        moviecard[i] = new Movie(response.data);
+                        moviecard[i].renderResponse(response.data);
+                        console.log(moviecard[i])
+                    }).catch((error) => { console.log(error) });
+
+                    // this.results.innerHTML += `<a href="https://www.filmweb.pl/Harry.Potter.I.Kamien.Filozoficzny">${response.data.Search[i].Title} rok: ${response.data.Search[i].Year} </br> </a>`;
+                    // (response.data.Search[i].Poster != "N/A") ? (this.results.innerHTML += `<img src="${response.data.Search[i].Poster}"></br></a>`) :`</a >`;
                 }
             }else{
-                this.results.innerHTML += response.data.Error;
+                console.log(response.data.Error);
             }
         }
         query(){
@@ -43,13 +51,13 @@ class Advanced {
                     title = `s="${t}"`;
                     check++;
                 }else{
-                    alert('Podaj szukany tytuł');
+                    alert("Please provide title to search for");
                 }
                 if (y>=0 || y=="") {
-                    (y=="")?year='':year = `&y="${y}"`;
+                    (y=="")?year='':year = `&y=${y}`;
                     check++;
                 } else {
-                    alert('Rok musi być wiekszy od zera');
+                    alert('Year must be greater than zero');
                 }
                 switch(ty){
                     case '1':

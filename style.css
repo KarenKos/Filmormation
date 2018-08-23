@@ -1,8 +1,12 @@
+body{
+    background-image: url('img/green_gobbler_@2X.png')
+}
+
 #film{
     text-align: center;
 }
 #adv{
-
+    margin-top: 1rem;
 }
 #inputs{
     width: 50%;
@@ -14,10 +18,16 @@
 
 }
 #results{
-    width: 50%;
+    width: 100%;
     margin-left: auto; 
     margin-right: auto;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#results > div{
+    margin: 1rem;
+
 }
 @media screen and (max-width: 800px) {
     #inputs, #results {
