@@ -24,7 +24,7 @@ class Advanced {
         this.adv.addEventListener('click',show);
         }
         display(response){
-            console.log(response);
+            // console.log(response);
             this.results.innerHTML='';
             let moviecard=[];
             if (response.data.Response=="True"){
@@ -75,7 +75,7 @@ class Advanced {
                 }
                 return (check==2)?true:false;
             }
-            console.log(this.title.value, this.year.value,this.type.value);
+            // console.log(this.title.value, this.year.value,this.type.value);
             if(validation(this.title.value, this.year.value,this.type.value)){
                 let request = `http://www.omdbapi.com/?apikey=f63ccd1d&${title}${type}${year}`;
                 console.log(request);
