@@ -1,5 +1,7 @@
 class More {
-    constructor() {  }
+    constructor(resp) { 
+        console.log(resp);
+     }
        };
   
   export default More;
