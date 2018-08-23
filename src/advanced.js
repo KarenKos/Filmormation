@@ -16,7 +16,18 @@ class Advanced {
             this.type = document.getElementById('type');
             this.search = document.getElementById('search');
             this.results = document.getElementById('results');
-            this.search.addEventListener('click', () => { this.query();}); 
+            this.search.addEventListener('click', () => { this.query();});
+            this.title.addEventListener('keypress', (e) => {
+                console.log(e.key);
+                if (e.key=='Enter'){
+                this.query();
+                }})
+            this.year.addEventListener('keypress', (e) => {
+                    console.log(e.key);
+                    if (e.key == 'Enter') {
+                        this.query();
+                    } 
+            });
         }
         this.film =document.getElementById('film');
         // this.film.innerHTML += '<button id="adv" type="button" class="btn btn-primary">Advanced search</button></br></br>';
@@ -30,7 +41,7 @@ class Advanced {
             let moviecard=[];
             if (response.data.Response=="True"){
                 for (let i =0; i<response.data.Search.length;i++){
-                    let request = `http://www.omdbapi.com/?apikey=f63ccd1d&i=${response.data.Search[i].imdbID}`;
+                    let request = `http://www.omdbapi.com/?apikey=f63ccd1d&i=${response.data.Search[i].imdbID}&plot=full`;
                     axios.get(request).then((response) => {
                         // console.log(request, response.data);
                         moviecard[i] = new Movie(response.data);
