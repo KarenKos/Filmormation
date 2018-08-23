@@ -1,4 +1,5 @@
 import axios from "axios";
+import More from "./more";
 
 class Advanced {
     constructor() {
@@ -27,8 +28,8 @@ class Advanced {
             this.results.innerHTML='';
             if (response.data.Response=="True"){
                 for (let i =0; i<5;i++){
-                    this.results.innerHTML += `${response.data.Search[i].Title} rok: ${response.data.Search[i].Year} </br>`;
-                    (response.data.Search[i].Poster!="N/A")?this.results.innerHTML += `<img src="${response.data.Search[i].Poster}"></br>`: false;
+                    this.results.innerHTML += `<a href="https://www.filmweb.pl/Harry.Potter.I.Kamien.Filozoficzny">${response.data.Search[i].Title} rok: ${response.data.Search[i].Year} </br> </a>`;
+                    (response.data.Search[i].Poster != "N/A") ? (this.results.innerHTML += `<img src="${response.data.Search[i].Poster}"></br></a>`) :`</a >`;
                 }
             }else{
                 this.results.innerHTML += response.data.Error;
