@@ -10,6 +10,7 @@ class Movie {
     }
     displayMore(event) {
         event.preventDefault();
+        console.log(event);
         this.more.show();
     }
     renderResponse(resp) {
@@ -30,10 +31,10 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">date of release is undefined</h6>
                 <p class="card-text">Plot is undefined</p>
-                <a href="#" id="submit2" class="btn btn-primary">More</a>
+                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
-                // this.submit2.addEventListener("click", this.displayMore);
+                // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
             }
             else if (plot === "N/A") {
                 this._film.innerHTML += `<div class="card" style="width: 18rem;">
@@ -41,10 +42,10 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${year}</h6>
                 <p class="card-text">Plot is undefined</p>
-                <a href="#" id="submit2" class="btn btn-primary">More</a>
+                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
-                // this.submit2.addEventListener("click", this.displayMore);
+                // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
             }
             else if (year === "N/A") {
                 this._film.innerHTML += `<div class="card" style="width: 18rem;">
@@ -52,10 +53,10 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">date of release is undefined</h6>
                 <p class="card-text">${plot}</p>
-                <a href="#" id="submit2" class="btn btn-primary">More</a>
+                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
-                // this.submit2.addEventListener("click", this.displayMore);
+                // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
             }
             else {
                 this._film.innerHTML += `<div class="card" style="width: 18rem;">
@@ -63,10 +64,10 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${year}</h6>
                 <p class="card-text">${plot}</p>
-                <a href="#" id="submit2" class="btn btn-primary">More</a>
+                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
-                // this.submit2.addEventListener("click", this.displayMore);
+                // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
             }
         }
         else {
@@ -77,10 +78,10 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">date of release is undefined</h6>
                 <p class="card-text">Plot is undefined</p>
-                <a href="#" id="submit2" class="btn btn-primary">More</a>
+                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
-                // this.submit2.addEventListener("click", this.displayMore);
+                // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
             }
             else if (plot === "N/A") {
                 this._film.innerHTML += `<div class="card" style="width: 18rem;">
@@ -89,10 +90,10 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${year}</h6>
                 <p class="card-text">Plot is undefined</p>
-                <a href="#" id="submit2" class="btn btn-primary">More</a>
+                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
-                // this.submit2.addEventListener("click", this.displayMore);
+                // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
             }
             else if (year === "N/A") {
                 this._film.innerHTML += `<div class="card" style="width: 18rem;">
@@ -101,10 +102,10 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">date of release is undefined</h6>
                 <p class="card-text">${plot}</p>
-                <a href="#" id="submit2" class="btn btn-primary">More</a>
+                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
-                // this.submit2.addEventListener("click", this.displayMore);
+                // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
             }
             else {
                 this._film.innerHTML += `<div class="card" style="width: 18rem;">
@@ -113,15 +114,20 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${year}</h6>
                 <p class="card-text">${plot}</p>
-                <a href="#" id="submit2" class="btn btn-primary">More</a>
+                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
-                // this.submit2.addEventListener("click", this.displayMore);
+                // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
             }
         }
-        let submit2 = document.querySelector("#submit2");
-        // console.log(submit2);
-        submit2.addEventListener("click", ()=>this.displayMore(event));
+        let submit2 = document.getElementById(`submit${this._film.childNodes.length-1}`);
+        // console.log(this._film.childNodes.length, `submit${this._film.childNodes.length-1}`, submit2);
+        // console.log(document.getElementById('submit0'));
+        for (let i = 0; i<this._film.childNodes.length; i++){
+            document.getElementById(`submit${i}`).addEventListener('click', ()=>this.displayMore(event));
+        }
+            // nie mam pojecia dlaczego to na górze dziala a to nizej nie, moze jakas dobra duszyczka kiedys wytlumaczy
+        // submit2.addEventListener('click', ()=>{this.displayMore(event)});
         return;
     }
 }

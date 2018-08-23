@@ -4,11 +4,12 @@ body{
 #film{
     text-align: center;
 }
-#adv{
+#hide{
     margin-top: 1rem;
 }
 #inputs{
     width: 50%;
+    margin-top: 1rem;
     margin-left: auto; 
     margin-right: auto;
     display: flex;
@@ -38,7 +39,7 @@ body{
     opacity:0.6;
     z-index:2;
 }
-#overlay-message{
+#info{
     position: fixed;
     top:2rem;
     left:2rem;

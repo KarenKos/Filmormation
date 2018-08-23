@@ -1,11 +1,11 @@
 import axios from "axios";
 import Movie from "./movie";
-import More from "./more";
+// import More from "./more";
 
 class Advanced {
     constructor() {
         const show = () => {
-            this.adv.removeEventListener('click', show);
+            // this.adv.removeEventListener('click', show);
             this.inputs=document.getElementById('inputs');
             this.inputs.innerHTML += '<div class="input-group mb-3"> <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">Title</span></div><input id="title" type="text" class="form-control" placeholder="Your title" aria-label="tytul" aria-describedby="basic-addon1"></div>';
             this.inputs.innerHTML += '<div class="input-group mb-3"> <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">Year</span></div><input id="year" type="number" class="form-control" placeholder="Release year" aria-label="tytul" aria-describedby="basic-addon1"></div>';
@@ -19,9 +19,10 @@ class Advanced {
             this.search.addEventListener('click', () => { this.query();}); 
         }
         this.film =document.getElementById('film');
-        this.film.innerHTML += '<button id="adv" type="button" class="btn btn-primary">Advanced search</button></br></br>';
-        this.adv= document.getElementById('adv');
-        this.adv.addEventListener('click',show);
+        // this.film.innerHTML += '<button id="adv" type="button" class="btn btn-primary">Advanced search</button></br></br>';
+        // this.adv= document.getElementById('adv');
+        // this.adv.addEventListener('click',show); //te linie przywroca przycisk zaawansowanej szukajki
+        show();
         }
         display(response){
             // console.log(response);
@@ -33,7 +34,7 @@ class Advanced {
                     axios.get(request).then((response) => {
                         // console.log(request, response.data);
                         moviecard[i] = new Movie(response.data);
-                        moviecard[i].renderResponse(response.data);
+                        moviecard[i].renderResponse(response.data,i);
                         // console.log(request,response.data)
                     }).catch((error) => { console.log(error) });
 
