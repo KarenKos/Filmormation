@@ -18,12 +18,12 @@ class Advanced {
             this.results = document.getElementById('results');
             this.search.addEventListener('click', () => { this.query();});
             this.title.addEventListener('keypress', (e) => {
-                console.log(e.key);
+                // console.log(e.key);
                 if (e.key=='Enter'){
                 this.query();
                 }})
             this.year.addEventListener('keypress', (e) => {
-                    console.log(e.key);
+                    // console.log(e.key);
                     if (e.key == 'Enter') {
                         this.query();
                     } 
@@ -41,11 +41,11 @@ class Advanced {
             let moviecard=[];
             if (response.data.Response=="True"){
                 for (let i =0; i<response.data.Search.length;i++){
-                    let request = `http://www.omdbapi.com/?apikey=f63ccd1d&i=${response.data.Search[i].imdbID}&plot=full`;
+                    let request = `http://www.omdbapi.com/?apikey=f63ccd1d&i=${response.data.Search[i].imdbID}`; //&plot=full
                     axios.get(request).then((response) => {
                         // console.log(request, response.data);
                         moviecard[i] = new Movie(response.data);
-                        moviecard[i].renderResponse(response.data,i);
+                        moviecard[i].renderResponse(response.data);
                         // console.log(request,response.data)
                     }).catch((error) => { console.log(error) });
 

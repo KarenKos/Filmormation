@@ -10,8 +10,9 @@ class Movie {
     }
     displayMore(event) {
         event.preventDefault();
+        // this.more = new More(this._resp);
         console.log(event);
-        this.more.show();
+        this.more.show(event);
     }
     renderResponse(resp) {
         const title = resp.Title;
@@ -31,7 +32,7 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">date of release is undefined</h6>
                 <p class="card-text">Plot is undefined</p>
-                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
+                <a href="#" title="${resp.imdbID}" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
                 // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
@@ -42,7 +43,7 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${year}</h6>
                 <p class="card-text">Plot is undefined</p>
-                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
+                <a href="#" title="${resp.imdbID}" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
                 // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
@@ -53,7 +54,7 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">date of release is undefined</h6>
                 <p class="card-text">${plot}</p>
-                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
+                <a href="#" title="${resp.imdbID}" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
                 // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
@@ -64,7 +65,7 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${year}</h6>
                 <p class="card-text">${plot}</p>
-                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
+                <a href="#" title="${resp.imdbID}" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
                 // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
@@ -78,7 +79,7 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">date of release is undefined</h6>
                 <p class="card-text">Plot is undefined</p>
-                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
+                <a href="#" title="${resp.imdbID}" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
                 // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
@@ -90,7 +91,7 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${year}</h6>
                 <p class="card-text">Plot is undefined</p>
-                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
+                <a href="#" title="${resp.imdbID}" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
                 // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
@@ -102,7 +103,7 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">date of release is undefined</h6>
                 <p class="card-text">${plot}</p>
-                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
+                <a href="#" title="${resp.imdbID}" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
                 // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
@@ -114,7 +115,7 @@ class Movie {
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${year}</h6>
                 <p class="card-text">${plot}</p>
-                <a href="#" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
+                <a href="#" title="${resp.imdbID}" id="submit${this._film.childNodes.length}" class="btn btn-primary">More</a>
                 </div>
                 </div>`;
                 // this.submit${this._film.childNodes.length}.addEventListener("click", this.displayMore);
