@@ -176,8 +176,9 @@ body{
 }
 .title h1{
     color: rgb(100, 100, 100);
-    text-shadow: 2px 2px #202020;
+    text-shadow: 2px 2px rgb(77, 77, 77);
     font-size: 75px;
+    font-family: 'Allerta Stencil', sans-serif;
 }
 
 @media screen and (max-width: 800px) {
