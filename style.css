@@ -170,7 +170,15 @@ body{
     grid-column: 3/11;
     background-color: lightgrey;
 }
-
+.title{
+    margin: 20px auto;
+    text-align: center;
+}
+.title h1{
+    color: rgb(100, 100, 100);
+    text-shadow: 2px 2px #202020;
+    font-size: 75px;
+}
 
 @media screen and (max-width: 800px) {
     #inputs, #results {
