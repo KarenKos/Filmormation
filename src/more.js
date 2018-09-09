@@ -1,36 +1,37 @@
 import axios from "axios";
+import Rating from "./rating";
 
 class More {
     constructor(resp) {
         this.film = document.getElementById('film');
         // this.resp=resp;
         // console.log('more',this.resp);
-     }
+    }
     check(element) {
         if (element == "N/A" || !element) {
             return 'Unknown';
         }
         return element;
     }
-    hideme(e){
+    hideme(e) {
         this.film.classList.remove("overlay");
         this.info.parentNode.removeChild(this.info);
     }
-     show(e){
-              this.film.classList.add("overlay");
-              this.film.innerHTML += `<div id="info"></div>`;
-              this.info = document.getElementById("info");
-              this.info.innerHTML = "";
-              //  this.info.innerHTML +='<button id="hide" type="button" class="btn btn-primary">Back</button></br></br>'
-              //  this.hide=document.getElementById('hide');
-              //  this.hide.addEventListener('click', (e)=>this.hideme(e))
+    show(e) {
+        this.film.classList.add("overlay");
+        this.film.innerHTML += `<div id="info"></div>`;
+        this.info = document.getElementById("info");
+        this.info.innerHTML = "";
+        //  this.info.innerHTML +='<button id="hide" type="button" class="btn btn-primary">Back</button></br></br>'
+        //  this.hide=document.getElementById('hide');
+        //  this.hide.addEventListener('click', (e)=>this.hideme(e))
 
-            //   console.log(e.target.title);
-               let request = `http://www.omdbapi.com/?apikey=f63ccd1d&i=${e.target.title}&plot=full`;
-               axios.get(request).then((response) => {
-                   console.log(request, response.data);
-                    this.resp=response.data;
-              this.info.innerHTML += `
+        //   console.log(e.target.title);
+        let request = `http://www.omdbapi.com/?apikey=f63ccd1d&i=${e.target.title}&plot=full`;
+        axios.get(request).then((response) => {
+            console.log(request, response.data);
+            this.resp = response.data;
+            this.info.innerHTML += `
                                 <div id="morecontainer">
                                     <div id="morebackground"></div>
                                     <div id="morebox">
@@ -48,19 +49,20 @@ class More {
                                             <div id="moreGridWriters">${this.resp.Writer}</div>
                                             <div id="moreGridProduction">${this.resp.Production}</div>
                                             <div id="moreGridBoxOffice">${this.resp.BoxOffice}</div>
-                                            <p id="moreGridRating">Czekamy na Eweline</p>
+                                            <p id="moreGridRating"></p>
                                             <div id="moreGridAwards">${this.resp.Awards}</div>
                                             <div id="moreGridLanguage">${this.resp.Language}</div>
-                                            <button type="button" class="fab fa-imdb" id="moreGridIMDB">TEST</button>
+                                            <a href="https://www.imdb.com/title/${this.resp.imdbID}" target="blank"><button type="button" class="fab fa-imdb" id="moreGridIMDB"></button></a>
                                         </div>
                                     </div>
                                 </div>`;
-              this.hide = document.getElementById("moreclose");
-              this.hide.addEventListener("click", e =>
+            this.hide = document.getElementById("moreclose");
+            let rating = new Rating();
+            this.hide.addEventListener("click", e =>
                 this.hideme(e)
-              );
-            }
-        )  
-    } 
+            );
+        }
+        )
+    }
 };
-  export default More;
+export default More;
